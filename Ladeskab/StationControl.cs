@@ -8,9 +8,16 @@ namespace Ladeskab
 {
     public class StationControl
     {
-        public bool testMethod()
+        public bool testMethod(bool x)
         {
-            return true;
+            if(x == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
