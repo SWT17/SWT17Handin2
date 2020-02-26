@@ -8,5 +8,9 @@ namespace Ladeskab
 {
     public class StationControl
     {
+        public bool testMethod()
+        {
+            return true;
+        }
     }
 }
