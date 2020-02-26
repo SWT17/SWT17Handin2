@@ -17,7 +17,7 @@ namespace Unittest
         {
             StationControl uut = new StationControl();
 
-            bool result = uut.testMethod();
+            bool result = uut.testMethod(true);
 
             Assert.IsTrue(result);
         }
