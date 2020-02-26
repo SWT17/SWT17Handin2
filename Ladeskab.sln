@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ladeskab", "Ladeskab\Ladeskab.csproj", "{F4E279B9-58BC-432E-97B8-83EDA4EC6515}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unittest", "Unittest\Unittest.csproj", "{A957190D-1046-4D4C-87D4-7775D770970F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ladeskab.Unit.test", "Unittest\Ladeskab.Unit.test.csproj", "{A957190D-1046-4D4C-87D4-7775D770970F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
