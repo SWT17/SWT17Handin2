@@ -12,14 +12,15 @@ namespace Unittest
     public class StationControlUnittest
     {
 
-        [Test]
-        public void testmethod_test_true()
+        [TestCase(true)]
+        [TestCase(false)]
+        public void testmethod_test_true(bool x)
         {
             StationControl uut = new StationControl();
 
-            bool result = uut.testMethod(true);
+            bool result = uut.testMethod(x);
 
-            Assert.IsTrue(result);
+            Assert.That(result, Is.EqualTo(x));
         }
 
     }
