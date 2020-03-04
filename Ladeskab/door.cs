@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App
+namespace Ladeskab
 {
-    public class Program
+    class door
     {
-        static void Main(string[] args)
-        {
-        }
     }
 }

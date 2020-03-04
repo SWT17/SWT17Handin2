@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App
+namespace Ladeskab
 {
-    public class Program
+    class RFIDreader
     {
-        static void Main(string[] args)
-        {
-        }
     }
 }
