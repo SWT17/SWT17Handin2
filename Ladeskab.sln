@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ladeskab", "Ladeskab\Ladesk
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ladeskab.Unit.test", "Unittest\Ladeskab.Unit.test.csproj", "{A957190D-1046-4D4C-87D4-7775D770970F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App", "App\App.csproj", "{DD17357F-F3CC-4770-8646-2BBFC4F74AE4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A957190D-1046-4D4C-87D4-7775D770970F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A957190D-1046-4D4C-87D4-7775D770970F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A957190D-1046-4D4C-87D4-7775D770970F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD17357F-F3CC-4770-8646-2BBFC4F74AE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD17357F-F3CC-4770-8646-2BBFC4F74AE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD17357F-F3CC-4770-8646-2BBFC4F74AE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD17357F-F3CC-4770-8646-2BBFC4F74AE4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
