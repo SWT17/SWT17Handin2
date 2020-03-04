@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Ladeskab
 {
-    class USBcharger
+    public class USBcharger
     {
+
     }
 }
