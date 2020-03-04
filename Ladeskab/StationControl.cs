@@ -82,4 +82,3 @@ namespace Ladeskab
         // Her mangler de andre trigger handlere
     }
 }
-}
