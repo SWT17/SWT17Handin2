@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ladeskab
 {
-    class Logfile
+    public class Logfile
     {
     }
 }
