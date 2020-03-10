@@ -8,5 +8,19 @@ namespace Ladeskab
 {
     class ChargeControl
     {
+        public event CurrentValueEvent();
+
+        public bool IsConnected()
+        {
+
+        }
+        public void StartCharge()
+        {
+
+        }
+        public void StopCharge()
+        {
+
+        }
     }
 }

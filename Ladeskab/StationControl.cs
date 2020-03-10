@@ -20,13 +20,14 @@ namespace Ladeskab
         private LadeskabState _state;
         private IUsbCharger _charger;
         private int _oldId;
+        private int _id;
 
         private string logFile = "logfile.txt"; // Navnet på systemets log-fil
 
         // Her mangler constructor
 
         // Eksempel på event handler for eventet "RFID Detected" fra tilstandsdiagrammet for klassen
-        private void RfidDetected(int id)
+        public void RfidDetected(int id) //ændret til public!!! :D
         {
             switch (_state)
             {
@@ -77,6 +78,21 @@ namespace Ladeskab
 
                     break;
             }
+        }
+
+        public void DoorOpened()
+        {
+
+        }
+
+        public void DoorClosed()
+        {
+
+        }
+
+        private bool CheckId(OldId id)
+        {
+
         }
 
         // Her mangler de andre trigger handlere

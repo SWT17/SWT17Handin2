@@ -6,16 +6,8 @@ using System.Threading.Tasks;
 
 namespace Ladeskab
 {
-    class Logfile
+    class RFIDreader
     {
-        public void LogDoorLocked(int Id)
-        {
-
-        }
-
-        public void LogDoorUnlocked(int Id)
-        {
-
-        }
+        public event RFIDDetectedEvent();
     }
 }

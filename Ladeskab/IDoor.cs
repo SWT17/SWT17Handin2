@@ -6,14 +6,16 @@ using System.Threading.Tasks;
 
 namespace Ladeskab
 {
-    class Logfile
+    class door
     {
-        public void LogDoorLocked(int Id)
+        public event DoorEvent();
+
+        public void LockDoor()
         {
 
         }
 
-        public void LogDoorUnlocked(int Id)
+        public void UnlockDoor()
         {
 
         }

@@ -8,5 +8,9 @@ namespace Ladeskab
 {
     class Display
     {
+        public void DisplayMessage()
+        {
+
+        }
     }
 }
