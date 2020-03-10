@@ -43,13 +43,13 @@
   <ItemGroup>
     <Compile Include="ChargeControl.cs" />
     <Compile Include="Display.cs" />
-    <Compile Include="door.cs" />
+    <Compile Include="Door.cs" />
     <Compile Include="IUsbCharger.cs" />
     <Compile Include="Logfile.cs" />
     <Compile Include="RFIDreader.cs" />
     <Compile Include="StationControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="USBcharger.cs" />
+    <Compile Include="UsbChargerSimulator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

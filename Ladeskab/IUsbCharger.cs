@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace Ladeskab
 {
+    /// <summary>
+    /// Givet kode
+    /// </summary>
+    
     public class CurrentEventArgs : EventArgs
     {
         // Value in mA (milliAmpere)
