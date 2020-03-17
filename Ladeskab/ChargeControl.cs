@@ -8,8 +8,15 @@ namespace Ladeskab
 {
    public class ChargeControl
     {
-        public event CurrentValueEvent();
+        public ChargeControl(IUsbCharger USBCharger)
+        {
+            USBCharger.CurrentValueEvent += HandleNewCurrentValue;
+        }
 
+        private void HandleNewCurrentValue(object sender, CurrentEventArgs e)
+        {
+
+        }
         public bool IsConnected()
         {
 

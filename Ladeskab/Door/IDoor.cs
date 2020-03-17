@@ -9,5 +9,10 @@ namespace Ladeskab
     public interface IDoor
     {
         event EventHandler<DoorOpenEventArgs> DoorOpenEvent;
+        void UserOpensDoor();
+        void UserClosesDoor();
+
+        void LockDoor();
+        void UnlockDoor();
     }
 }

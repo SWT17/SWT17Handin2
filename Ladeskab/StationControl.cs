@@ -8,11 +8,31 @@ namespace Ladeskab
 {
     public class StationControl
     {
-        public StationControl(IRFIDReader RFIDReader)
+        private IDoor _door;
+        public StationControl(IRFIDReader RFIDReader, IDoor Door)
         {
-            RFIDReader.RFIDDetectedEvent += RfidDetected();
+            RFIDReader.RFIDDetectedEvent += HandleNewRFID;
+            Door.DoorOpenEvent += HandleNewDoorOpen;
+            //Door = _door;
         }
-        event EventHandler<DoorOpenEventArgs> DoorOpenEvent;
+
+        private void HandleNewRFID(object sender, RFIDDetectedEventArgs e)
+        {
+            RfidDetected(e.Id);
+        }
+
+        private void HandleNewDoorOpen(object sender, DoorOpenEventArgs e)
+        {
+            if (e.Open)
+            {
+               DoorOpened();
+            }
+            else
+            {
+                DoorClosed();
+            }
+        }
+
         // Enum med tilstande ("states") svarende til tilstandsdiagrammet for klassen
         private enum LadeskabState
         {
@@ -87,7 +107,7 @@ namespace Ladeskab
 
         public void DoorOpened()
         {
-
+            
         }
 
         public void DoorClosed()

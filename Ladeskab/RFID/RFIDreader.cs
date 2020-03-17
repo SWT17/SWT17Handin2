@@ -10,8 +10,6 @@ namespace Ladeskab
     {
 
         public event EventHandler<RFIDDetectedEventArgs> RFIDDetectedEvent;
-        private 
-        public int RFIDTagId { get; set; }
 
         //private StationControl _stationControl;
         //public RFIDreader()
@@ -19,9 +17,9 @@ namespace Ladeskab
         //    _stationControl = new StationControl();
         //}
 
-        public void RFIDTagPresented()
+        public void OnRFIDTagPresented(int id)
         {
-            RFIDDetectedEvent?.Invoke(this, new RFIDDetectedEventArgs(){Id = RFIDTagId});
+            RFIDDetectedEvent?.Invoke(this, new RFIDDetectedEventArgs(){Id = id});
         }
     }
 }
