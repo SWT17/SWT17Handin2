@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Ladeskab
 {
-   public interface IRFIDReader
+    public class CurrentEventArgs : EventArgs
     {
-        event EventHandler<RFIDDetectedEventArgs> RFIDDetectedEvent;
+        // Value in mA (milliAmpere)
+        public double Current { set; get; }
     }
 }

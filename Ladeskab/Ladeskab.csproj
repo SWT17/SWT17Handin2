@@ -42,10 +42,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChargeControl.cs" />
+    <Compile Include="CurrentEventArgs.cs" />
     <Compile Include="Display.cs" />
     <Compile Include="Door.cs" />
+    <Compile Include="DoorOpenEventArgs.cs" />
+    <Compile Include="IDoor.cs" />
+    <Compile Include="IRFIDReader.cs" />
     <Compile Include="IUsbCharger.cs" />
     <Compile Include="Logfile.cs" />
+    <Compile Include="RFIDDetectedEventArgs.cs" />
     <Compile Include="RFIDreader.cs" />
     <Compile Include="StationControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

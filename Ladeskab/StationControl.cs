@@ -8,6 +8,11 @@ namespace Ladeskab
 {
     public class StationControl
     {
+        public StationControl(IRFIDReader RFIDReader)
+        {
+            RFIDReader.RFIDDetectedEvent += RfidDetected();
+        }
+        event EventHandler<DoorOpenEventArgs> DoorOpenEvent;
         // Enum med tilstande ("states") svarende til tilstandsdiagrammet for klassen
         private enum LadeskabState
         {
