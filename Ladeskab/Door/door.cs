@@ -38,5 +38,6 @@ namespace Ladeskab
         {
             Console.WriteLine("Door is unlocked - please remove your phone :)");
         }
+
     }
 }

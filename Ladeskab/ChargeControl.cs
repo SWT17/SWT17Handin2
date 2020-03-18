@@ -17,10 +17,10 @@ namespace Ladeskab
         {
 
         }
-        public bool IsConnected()
-        {
+        //public bool IsConnected()
+        //{
 
-        }
+        //}
         public void StartCharge()
         {
 
