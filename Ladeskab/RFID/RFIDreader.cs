@@ -6,15 +6,20 @@ using System.Threading.Tasks;
 
 namespace Ladeskab
 {
-   public class RFIDreader : IRFIDReader
+   public class RFIDReader : IRFIDReader
     {
 
         public event EventHandler<RFIDDetectedEventArgs> RFIDDetectedEvent;
 
         //private StationControl _stationControl;
-        //public RFIDreader()
+        //public RFIDReader()
         //{
         //    _stationControl = new StationControl();
+        //}
+
+        //public RFIDReader(StationControl _stationControl)
+        //{
+
         //}
 
         public void OnRFIDTagPresented(int id)

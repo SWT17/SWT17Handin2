@@ -8,25 +8,21 @@ namespace Ladeskab
 {
     public class Door : IDoor
     {
-        //private StationControl _stationControl;
+        // her anvendes to events da de hver især repræsenterer forskellige states
+        // events indeholder ingen yderligere information
+
         public event EventHandler<DoorOpenEventArgs> DoorOpenEvent;
-        public Door()
+        public event EventHandler<DoorClosedEventArgs> DoorClosedEvent;
+
+
+        public void OnUserOpensDoor()
         {
-            //_stationControl = new StationControl();
-            //DoorOpenEvent.Invoke(this, new DoorOpenEventArgs(){Open = false});
-        }
-        
-        
-        public void UserOpensDoor()
-        {
-            DoorOpenEvent.Invoke(this, new DoorOpenEventArgs() { Open = true });
-            //_stationControl.DoorOpened();
+            DoorOpenEvent?.Invoke(this, new DoorOpenEventArgs());
         }
 
-        public void UserClosesDoor()
+        public void OnUserClosesDoor()
         {
-            DoorOpenEvent.Invoke(this, new DoorOpenEventArgs() { Open = false });
-            //_stationControl.DoorClosed();
+            DoorClosedEvent?.Invoke(this, new DoorClosedEventArgs());
         }
 
         public void LockDoor()

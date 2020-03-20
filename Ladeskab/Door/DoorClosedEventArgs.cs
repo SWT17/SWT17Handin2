@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace Ladeskab
 {
-   public interface IRFIDReader
+  public class DoorClosedEventArgs : EventArgs
     {
-        event EventHandler<RFIDDetectedEventArgs> RFIDDetectedEvent;
 
-        void OnRFIDTagPresented(int id);
     }
 }

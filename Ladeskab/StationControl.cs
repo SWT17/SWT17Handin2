@@ -9,11 +9,20 @@ namespace Ladeskab
     public class StationControl
     {
         private IDoor _door;
-        public StationControl(IRFIDReader RFIDReader, IDoor Door)
+        private IRFIDReader _rfidReader;
+        private Display _display;
+        private Logfile _logfile;
+        private IUsbCharger _usbCharger;
+        public StationControl(IRFIDReader RFIDReader, IDoor Door, Display display, Logfile logfile, IUsbCharger usbCharger)
         {
             RFIDReader.RFIDDetectedEvent += HandleNewRFID;
             Door.DoorOpenEvent += HandleNewDoorOpen;
-            //Door = _door;
+            Door.DoorClosedEvent += HandleNewDoorClosed;
+            _door = Door;
+            _rfidReader = RFIDReader;
+            _display = display;
+            _logfile = logfile;
+            _usbCharger = usbCharger;
         }
 
         private void HandleNewRFID(object sender, RFIDDetectedEventArgs e)
@@ -23,14 +32,12 @@ namespace Ladeskab
 
         private void HandleNewDoorOpen(object sender, DoorOpenEventArgs e)
         {
-            if (e.Open)
-            {
-               DoorOpened();
-            }
-            else
-            {
-                DoorClosed();
-            }
+            DoorOpened();
+        }
+
+        private void HandleNewDoorClosed(object sender, DoorClosedEventArgs e)
+        {
+            DoorClosed();
         }
 
         // Enum med tilstande ("states") svarende til tilstandsdiagrammet for klassen
@@ -43,7 +50,6 @@ namespace Ladeskab
 
         // Her mangler flere member variable
         private LadeskabState _state;
-        private IUsbCharger _charger;
         private int _oldId;
         private int _id;
 
@@ -58,10 +64,10 @@ namespace Ladeskab
             {
                 case LadeskabState.Available:
                     // Check for ladeforbindelse
-                    if (_charger.Connected)
+                    if (_usbCharger.Connected)
                     {
                         _door.LockDoor();
-                        _charger.StartCharge();
+                        _usbCharger.StartCharge();
                         _oldId = id;
                         //using (var writer = File.AppendText(logFile))
                         //{
@@ -86,7 +92,7 @@ namespace Ladeskab
                     // Check for correct ID
                     if (id == _oldId)
                     {
-                        _charger.StopCharge();
+                        _usbCharger.StopCharge();
                         _door.UnlockDoor();
                         //using (var writer = File.AppendText(logFile))
                         //{
@@ -112,7 +118,7 @@ namespace Ladeskab
 
         public void DoorClosed()
         {
-
+           
         }
 
         //private bool CheckId(OldId id)

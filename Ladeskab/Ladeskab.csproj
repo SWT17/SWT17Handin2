@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChargeControl.cs" />
+    <Compile Include="Door\DoorClosedEventArgs.cs" />
     <Compile Include="USBCharger\CurrentEventArgs.cs" />
     <Compile Include="Display.cs" />
     <Compile Include="Door\Door.cs" />
@@ -51,7 +52,7 @@
     <Compile Include="USBCharger\IUsbCharger.cs" />
     <Compile Include="Logfile.cs" />
     <Compile Include="RFID\RFIDDetectedEventArgs.cs" />
-    <Compile Include="RFID\RFIDreader.cs" />
+    <Compile Include="RFID\RFIDReader.cs" />
     <Compile Include="StationControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="USBCharger\UsbChargerSimulator.cs" />

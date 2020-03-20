@@ -8,6 +8,5 @@ namespace Ladeskab
 {
    public class DoorOpenEventArgs : EventArgs
     {
-        public bool Open { get; set; }
     }
 }

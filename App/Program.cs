@@ -5,6 +5,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using Ladeskab;
+using UsbSimulator;
 
 namespace App
 {
@@ -12,11 +13,20 @@ namespace App
     {
         static void Main(string[] args)
         {
-            IRFIDReader _rfidReader = new RFIDreader();
             IDoor _door = new Door();
-            StationControl _stationControl = new StationControl(_rfidReader,_door);
+            IRFIDReader _rfidReader = new RFIDReader();
+            Display _display = new Display();
+            Logfile _logfile = new Logfile();
+            IUsbCharger _usbCharger = new UsbChargerSimulator();
 
-            _door.UserOpensDoor();
+            StationControl _stationControl = new StationControl(_rfidReader, _door, _display, _logfile, _usbCharger);
+
+            ChargeControl _chargeControl = new ChargeControl(_usbCharger, _display);
+            _door.OnUserOpensDoor();
+            _door.OnUserOpensDoor();
+            _door.OnUserOpensDoor();
+            _door.OnUserClosesDoor();
+            Console.ReadKey();
         }
     }
 }
