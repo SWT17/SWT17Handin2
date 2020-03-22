@@ -8,9 +8,9 @@ namespace Ladeskab
 {
    public class Display
     {
-        public void DisplayMessage()
+        public void DisplayMessage(string message)
         {
-
+            Console.WriteLine(message);
         }
     }
 }
