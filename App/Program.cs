@@ -22,13 +22,21 @@ namespace App
             StationControl _stationControl = new StationControl(_rfidReader, _door, _display, _logfile, _usbCharger);
 
             ChargeControl _chargeControl = new ChargeControl(_usbCharger, _display);
-    //        _door.OnUserOpensDoor();
-    //        _door.OnUserOpensDoor();
+
+            //        _door.OnUserOpensDoor();
             _door.OnUserOpensDoor();
-            _rfidReader.OnRFIDTagPresented(123);
+            System.Threading.Thread.Sleep(2000);
             _door.OnUserClosesDoor();
+            System.Threading.Thread.Sleep(2000);
             _rfidReader.OnRFIDTagPresented(123);
-            Console.WriteLine("test");
+            System.Threading.Thread.Sleep(1000);
+            Console.WriteLine("...");
+            System.Threading.Thread.Sleep(1000);
+            Console.WriteLine("...");
+            System.Threading.Thread.Sleep(1000);
+            Console.WriteLine("...");
+            System.Threading.Thread.Sleep(2000);
+            _rfidReader.OnRFIDTagPresented(123);
             Console.ReadKey();
         }
     }
