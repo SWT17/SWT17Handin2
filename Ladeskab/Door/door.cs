@@ -27,12 +27,12 @@ namespace Ladeskab
 
         public void LockDoor()
         {
-            Console.WriteLine("Door is locked - your phone is charging :)");
+
         }
 
         public void UnlockDoor()
         {
-            Console.WriteLine("Door is unlocked - please remove your phone :)");
+
         }
 
     }
