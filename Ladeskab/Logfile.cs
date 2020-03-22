@@ -10,12 +10,12 @@ namespace Ladeskab
     {
         public void LogDoorLocked(int Id)
         {
-
+            File.AppendAllText("..\\Log.txt", "Locked:    ID; " + slope + "; Date;" + DateTime.Now + "\n");
         }
 
         public void LogDoorUnlocked(int Id)
         {
-
+     //       File.AppendAllText("..\\Ladeskab\\Log.txt", "Unlocked:    ID; " + slope + "; Date;" + DateTime.Now + "\n");
         }
     }
 }
