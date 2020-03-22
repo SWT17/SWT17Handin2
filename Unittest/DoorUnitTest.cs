@@ -18,6 +18,7 @@ namespace Unittest
         private IRFIDReader _rfidReader;
         private StationControl _stationControl;
         private IUsbCharger _usbCharger;
+
         [SetUp]
         public void SetUp()
         {
@@ -28,11 +29,11 @@ namespace Unittest
         }
 
         /// <summary>
-        /// Der testes overordnet for at sikre sig at når døren åbnes eller lukkes så bliver de relevante metoder kaldt i StationControl.
-        /// De "modtagende" metoder i StationControl kan vi ikke teste på da de er private. Da der heller ikke sættes nogen variable fra disse,
-        /// skal der testes imod om metoderne bliver kaldt. Man kan teste ved at kalde metoderne OnUserOpensDoor og OnUserClosesDoor eller ved
-        /// at raise eventet med den variabel som vi ønsker (Open, boolean). Ved at teste med metoderne ved vi at de rigtige events bliver kaldt.
-        /// Dette bliver også separat testet så koden er gennemtestet.
+        /// Der testes overordnet for at sikre sig at når døren åbnes eller lukkes så bliver de relevante events raised.
+        /// De "modtagende" metoder i StationControl kan vi ikke teste på da de er private.
+        /// Man kan teste ved at kalde metoderne OnUserOpensDoor og OnUserClosesDoor eller ved
+        /// at raise eventet.Her testes ved at kalde metoderne og så delegate en aktivitet til eventet, for eksempel at sætte
+        /// en value eller tilføje til en liste. Der assertes så på at dette sker som forventet.
         /// </summary>
         ///
 
@@ -95,8 +96,8 @@ namespace Unittest
                 receivedEvents.Add(e);
             };
 
-            uut.OnUserClosesDoor();
             uut.OnUserOpensDoor();
+            uut.OnUserClosesDoor();
             uut.OnUserOpensDoor();
             uut.OnUserClosesDoor();
 
@@ -104,14 +105,5 @@ namespace Unittest
         }
 
         #endregion
-
-
-        [Test]
-        public void OnUserOpensDoor_Ctrl_Method_DoorOpened() // her testes at der kaldes metoden DoorOpened som resultat af OnUserOpensDoor
-        {
-            uut.OnUserOpensDoor();
-
-            _stationControl.Received(10).DoorOpened();
-        }
     }
 }
