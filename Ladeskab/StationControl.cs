@@ -113,12 +113,12 @@ namespace Ladeskab
 
         public void DoorOpened()
         {
-            
+            _display.DisplayMessage("Tilslut telefon");
         }
 
         public void DoorClosed()
         {
-           
+            _display.DisplayMessage("Indlæs RFID");
         }
 
         //private bool CheckId(OldId id)
