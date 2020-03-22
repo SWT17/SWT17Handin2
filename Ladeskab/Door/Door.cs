@@ -17,23 +17,24 @@ namespace Ladeskab
 
         public void OnUserOpensDoor()
         {
+            Console.WriteLine("[Door opens]");
             DoorOpenEvent?.Invoke(this, new DoorOpenEventArgs());
         }
 
         public void OnUserClosesDoor()
         {
+            Console.WriteLine("[Door closes]");
             DoorClosedEvent?.Invoke(this, new DoorClosedEventArgs());
         }
 
         public void LockDoor()
         {
-
+            Console.WriteLine("[Door is locked]");
         }
 
         public void UnlockDoor()
         {
-
+            Console.WriteLine("[Door is unlocked]");
         }
-
     }
 }

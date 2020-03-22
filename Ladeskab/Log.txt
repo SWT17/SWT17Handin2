@@ -18,3 +18,10 @@ Locked:		ID: 123; 	Date: 22-03-2020 15:14:59
 Unlocked:	ID: 123;	Date: 22-03-2020 15:15:04
 Locked:		ID: 123; 	Date: 22-03-2020 15:15:47
 Unlocked:	ID: 123;	Date: 22-03-2020 15:15:52
+Locked:		ID: 123; 	Date: 22-03-2020 15:36:20
+Unlocked:	ID: 123;	Date: 22-03-2020 15:36:25
+Locked:		ID: 123; 	Date: 22-03-2020 15:41:53
+Unlocked:	ID: 123;	Date: 22-03-2020 15:41:58
+Locked:		ID: 123; 	Date: 22-03-2020 15:43:43
+Locked:		ID: 123; 	Date: 22-03-2020 15:44:03
+Unlocked:	ID: 123;	Date: 22-03-2020 15:44:08
