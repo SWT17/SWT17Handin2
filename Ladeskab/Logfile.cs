@@ -9,21 +9,28 @@ namespace Ladeskab
 {
     public class Logfile
     {
-
-
         public void LogDoorLocked(int Id)
         {
-            //using (var writer = File.AppendText(Log))
-            //using (var writer = File.AppendText(logFile))
-            //{
-            //    writer.WriteLine(DateTime.Now + ": Skab låst op med RFID: {0}", id);
-            //}
-            File.AppendAllText("..\\Log.txt", "Locked:    ID; " + Id + "; Date;" + DateTime.Now + "\n");
+            File.AppendAllText("..\\..\\..\\Ladeskab\\Log.txt", "Locked:\t\tID: " + Id + "; \tDate: " + DateTime.Now + "\n");
+
+            //Kode der gør man kan læse fra filen
+            /*
+            string logData;
+            string inputRecord;
+            string[] inputFields;
+
+            while ((inputRecord = fileReader.ReadLine()) != null)
+            {
+                inputFields = inputRecord.Split(';');
+                logData = inputFields[1];
+            }
+            fileReader.Close();
+            */
         }
 
         public void LogDoorUnlocked(int Id)
         {
-     //       File.AppendAllText("..\\Ladeskab\\Log.txt", "Unlocked:    ID; " + slope + "; Date;" + DateTime.Now + "\n");
+            File.AppendAllText("..\\..\\..\\Ladeskab\\Log.txt", "Unlocked:\tID: " + Id + ";\tDate: " + DateTime.Now + "\n");
         }
     }
 }

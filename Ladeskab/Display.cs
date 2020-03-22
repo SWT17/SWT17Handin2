@@ -10,7 +10,7 @@ namespace Ladeskab
     {
         public void DisplayMessage(string message)
         {
-            Console.WriteLine(message);
+            Console.WriteLine("Display: " + message);
         }
     }
 }
