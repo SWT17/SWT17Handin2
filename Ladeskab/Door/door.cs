@@ -13,11 +13,22 @@ namespace Ladeskab
 
         public event EventHandler<DoorOpenEventArgs> DoorOpenEvent;
         public event EventHandler<DoorClosedEventArgs> DoorClosedEvent;
+        private DoorState _doorState;
+
+
+        private enum DoorState
+        {
+            Locked,
+            Unlocked
+        }
 
 
         public void OnUserOpensDoor()
         {
-            DoorOpenEvent?.Invoke(this, new DoorOpenEventArgs());
+            if (_doorState == DoorState.Unlocked)
+            {
+                DoorOpenEvent?.Invoke(this, new DoorOpenEventArgs());
+            }
         }
 
         public void OnUserClosesDoor()
@@ -27,12 +38,12 @@ namespace Ladeskab
 
         public void LockDoor()
         {
-            Console.WriteLine("Door is locked - your phone is charging :)");
+            _doorState = DoorState.Locked;
         }
 
         public void UnlockDoor()
         {
-            Console.WriteLine("Door is unlocked - please remove your phone :)");
+            _doorState = DoorState.Unlocked;
         }
 
     }
