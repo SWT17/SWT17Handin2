@@ -116,11 +116,6 @@ namespace Ladeskab
             }
         }
 
-        private int ReadIFID()
-        {
-            return 123;
-        }
-
         public void DoorOpened()
         {
             _display.DisplayMessage("Tilslut telefon");
