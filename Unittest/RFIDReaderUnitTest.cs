@@ -16,6 +16,8 @@ namespace Unittest
         private IRFIDReader uut;
         private StationControl _stationControl;
 
+        public event EventHandler _eventInvoker;
+
         [SetUp]
 
         public void SetUp()
@@ -34,9 +36,12 @@ namespace Unittest
         {
             var rfidEventRaised = 0;
 
-            uut.RFIDDetectedEvent += delegate (object sender, RFIDDetectedEventArgs e) { rfidEventRaised = 1; };
+           uut.RFIDDetectedEvent += delegate (object sender, RFIDDetectedEventArgs a) { rfidEventRaised = 1; };
 
+            //uut.RFIDDetectedEvent += Raise.EventWith(new RFIDDetectedEventArgs(){Id = 0000});
             uut.OnRFIDTagPresented(0000);
+
+            //_stationControl.Received(1).RfidDetected(0000);
 
             Assert.That(rfidEventRaised, Is.EqualTo(1));
         }

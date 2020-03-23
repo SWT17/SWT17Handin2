@@ -11,7 +11,6 @@ namespace Ladeskab
         event EventHandler<DoorOpenEventArgs> DoorOpenEvent;
         event EventHandler<DoorClosedEventArgs> DoorClosedEvent;
 
-       
         void OnUserOpensDoor();
         void OnUserClosesDoor();
 

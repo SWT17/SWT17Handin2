@@ -116,6 +116,8 @@ namespace Ladeskab
             }
         }
 
+       
+
         public void DoorOpened()
         {
             _display.DisplayMessage("Tilslut telefon");

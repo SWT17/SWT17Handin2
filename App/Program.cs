@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using Ladeskab;
 using UsbSimulator;
 
@@ -25,17 +26,17 @@ namespace App
 
             //        _door.OnUserOpensDoor();
             _door.OnUserOpensDoor();
-            System.Threading.Thread.Sleep(2000);
+            Thread.Sleep(2000);
             _door.OnUserClosesDoor();
-            System.Threading.Thread.Sleep(2000);
+            Thread.Sleep(2000);
             _rfidReader.OnRFIDTagPresented(123);
-            System.Threading.Thread.Sleep(1000);
+            Thread.Sleep(1000);
             Console.WriteLine("...");
-            System.Threading.Thread.Sleep(1000);
+            Thread.Sleep(1000);
             Console.WriteLine("...");
-            System.Threading.Thread.Sleep(1000);
+            Thread.Sleep(1000);
             Console.WriteLine("...");
-            System.Threading.Thread.Sleep(2000);
+            Thread.Sleep(2000);
             _rfidReader.OnRFIDTagPresented(123);
             Console.ReadKey();
         }
