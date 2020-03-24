@@ -8,6 +8,38 @@ namespace Ladeskab
 {
     public class StationControl
     {
+        private IDoor _door;
+        private IRFIDReader _rfidReader;
+        private Display _display;
+        private Logfile _logfile;
+        private IUsbCharger _usbCharger;
+        public StationControl(IRFIDReader RFIDReader, IDoor Door, Display display, Logfile logfile, IUsbCharger usbCharger)
+        {
+            RFIDReader.RFIDDetectedEvent += HandleNewRFID;
+            Door.DoorOpenEvent += HandleNewDoorOpen;
+            Door.DoorClosedEvent += HandleNewDoorClosed;
+            _door = Door;
+            _rfidReader = RFIDReader;
+            _display = display;
+            _logfile = logfile;
+            _usbCharger = usbCharger;
+        }
+
+        private void HandleNewRFID(object sender, RFIDDetectedEventArgs e)
+        {
+            RfidDetected(e.Id);
+        }
+
+        private void HandleNewDoorOpen(object sender, DoorOpenEventArgs e)
+        {
+            DoorOpened();
+        }
+
+        private void HandleNewDoorClosed(object sender, DoorClosedEventArgs e)
+        {
+            DoorClosed();
+        }
+
         // Enum med tilstande ("states") svarende til tilstandsdiagrammet for klassen
         private enum LadeskabState
         {
@@ -18,30 +50,32 @@ namespace Ladeskab
 
         // Her mangler flere member variable
         private LadeskabState _state;
-        private IUsbCharger _charger;
         private int _oldId;
         private int _id;
 
-        private string logFile = "logfile.txt"; // Navnet på systemets log-fil
+        // Vi har lavet en Logfile klasse, derfor er næste linje ikke med mere
+        //private string logFile = "logfile.txt"; // Navnet på systemets log-fil
+
 
         // Her mangler constructor
 
         // Eksempel på event handler for eventet "RFID Detected" fra tilstandsdiagrammet for klassen
-        public void RfidDetected(int id) //ændret til public!!! :D
+        public void RfidDetected(int id) //ændret til public!!! :D    Skal den være det?? bliver den ikke kun kaldt i denne klasse??
         {
             switch (_state)
             {
                 case LadeskabState.Available:
                     // Check for ladeforbindelse
-                    if (_charger.Connected)
+                    if (_usbCharger.Connected)
                     {
                         _door.LockDoor();
-                        _charger.StartCharge();
+                        _usbCharger.StartCharge();
                         _oldId = id;
-                        using (var writer = File.AppendText(logFile))
-                        {
-                            writer.WriteLine(DateTime.Now + ": Skab låst med RFID: {0}", id);
-                        }
+                        //using (var writer = File.AppendText(logFile))
+                        //{
+                        //    writer.WriteLine(DateTime.Now + ": Skab låst med RFID: {0}", id);
+                        //}
+                        _logfile.LogDoorLocked(id);
 
                         Console.WriteLine("Skabet er låst og din telefon lades. Brug dit RFID tag til at låse op.");
                         _state = LadeskabState.Locked;
@@ -61,12 +95,14 @@ namespace Ladeskab
                     // Check for correct ID
                     if (id == _oldId)
                     {
-                        _charger.StopCharge();
+                        _usbCharger.StopCharge();
                         _door.UnlockDoor();
-                        using (var writer = File.AppendText(logFile))
-                        {
-                            writer.WriteLine(DateTime.Now + ": Skab låst op med RFID: {0}", id);
-                        }
+                        //using (var writer = File.AppendText(logFile))
+                        //{
+                        //    writer.WriteLine(DateTime.Now + ": Skab låst op med RFID: {0}", id);
+                        //}
+
+                        _logfile.LogDoorUnlocked(id);
 
                         Console.WriteLine("Tag din telefon ud af skabet og luk døren");
                         _state = LadeskabState.Available;
@@ -80,20 +116,22 @@ namespace Ladeskab
             }
         }
 
+       
+
         public void DoorOpened()
         {
-
+            _display.DisplayMessage("Tilslut telefon");
         }
 
         public void DoorClosed()
         {
-
+            _display.DisplayMessage("Indlæs RFID");
         }
 
-        private bool CheckId(OldId id)
-        {
+        //private bool CheckId(OldId id)
+        //{
 
-        }
+        //}
 
         // Her mangler de andre trigger handlere
     }

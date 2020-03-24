@@ -7,13 +7,22 @@ using System.Threading.Tasks;
 namespace Ladeskab
 {
    public class ChargeControl
-    {
-        public event CurrentValueEvent();
+   {
+       private Display _display;
+        public ChargeControl(IUsbCharger USBCharger, Display display)
+        {
+            USBCharger.CurrentValueEvent += HandleNewCurrentValue;
+            _display = display;
+        }
 
-        public bool IsConnected()
+        private void HandleNewCurrentValue(object sender, CurrentEventArgs e)
         {
 
         }
+        //public bool IsConnected()
+        //{
+
+        //}
         public void StartCharge()
         {
 

@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ladeskab
 {
-   public class Display
+   public class DoorOpenEventArgs : EventArgs
     {
-        public void DisplayMessage(string message)
-        {
-            Console.WriteLine("Display: " + message);
-        }
     }
 }
