@@ -19,17 +19,7 @@ namespace Unittest
         private StationControl _stationControl;
         private IUsbCharger _usbCharger;
 
-        [SetUp]
-
-        public void SetUp()
-        {
-            _door = Substitute.For<IDoor>();
-            _rfidReader = Substitute.For<IRFIDReader>();
-            _display = new Display();
-            _logfile = new Logfile();
-            _usbCharger = Substitute.For<IUsbCharger>();
-            _stationControl = new StationControl(_rfidReader,_door, _display, _logfile, _usbCharger);
-        }
+       
 
     }
 }
