@@ -13,6 +13,7 @@ namespace Unittest
 
     public class LogFileUnitTest
     {
+        [Test]
 
         public void LogDoorUnlocked_SaveID111_fileHasSavedID111()
         {
