@@ -8,7 +8,7 @@ namespace Unittest
 {
     public class HandleNewCurrentValueUnitTest
     {
-        [TestFixture]
+        
 
     }
 }
