@@ -15,6 +15,8 @@ namespace Unittest
         private IDoor _door;
         private IRFIDReader uut;
         private StationControl _stationControl;
+        private ChargeControl _chargeControl;
+        private IUsbCharger _usbCharger;
 
         public event EventHandler _eventInvoker;
 
@@ -22,9 +24,11 @@ namespace Unittest
 
         public void SetUp()
         {
+            _usbCharger = new UsbChargerSimulator();
+            _chargeControl = new ChargeControl(_usbCharger, new Display());
             uut = new RFIDReader();
             _door = Substitute.For<Door>();
-            _stationControl = Substitute.For<StationControl>(uut, _door, new Display(), new Logfile(), new UsbChargerSimulator());
+            _stationControl = Substitute.For<StationControl>(uut, _door, new Display(), new Logfile(), _chargeControl );
         }
 
 

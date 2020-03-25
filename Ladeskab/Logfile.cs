@@ -11,7 +11,7 @@ namespace Ladeskab
     {
         public void LogDoorLocked(int Id)
         {
-            File.AppendAllText("..\\..\\..\\Ladeskab\\Log.txt", "Locked:\t\tID: " + Id + "; \tDate: " + DateTime.Now + "\n");
+            File.AppendAllText(System.AppDomain.CurrentDomain.BaseDirectory + "\\Log.txt", "Locked:\t\tID: " + Id + "; \tDate: " + DateTime.Now + "\n");
 
             //Kode der gør man kan læse fra filen
             /*
@@ -30,7 +30,8 @@ namespace Ladeskab
 
         public void LogDoorUnlocked(int Id)
         {
-            File.AppendAllText("..\\..\\..\\Ladeskab\\Log.txt", "Unlocked:\tID: " + Id + ";\tDate: " + DateTime.Now + "\n");
+
+            File.AppendAllText(System.AppDomain.CurrentDomain.BaseDirectory+"\\Log.txt", "Unlocked:\tID: " + Id + ";\tDate: " + DateTime.Now + "\n");
         }
     }
 }

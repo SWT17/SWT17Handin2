@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -19,12 +20,13 @@ namespace App
             Display _display = new Display();
             Logfile _logfile = new Logfile();
             IUsbCharger _usbCharger = new UsbChargerSimulator();
-
-            StationControl _stationControl = new StationControl(_rfidReader, _door, _display, _logfile, _usbCharger);
-
             ChargeControl _chargeControl = new ChargeControl(_usbCharger, _display);
 
+            StationControl _stationControl = new StationControl(_rfidReader, _door, _display, _logfile,_chargeControl);
+
+
             //        _door.OnUserOpensDoor();
+
             _door.OnUserOpensDoor();
             Thread.Sleep(2000);
             _door.OnUserClosesDoor();
