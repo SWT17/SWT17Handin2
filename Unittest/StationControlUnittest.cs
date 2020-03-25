@@ -51,7 +51,7 @@ namespace Unittest
         }
 
         [Test]
-        public void RfidDetected_IdEqualOldId_LadeskabeIsAvailable()
+        public void RfidDetected_LadeskabeStateLockedAndIdEqualOldId_LadeskabeIsAvailable()
         {
             // Arrange
             _usbCharger = Substitute.For<IUsbCharger>();
@@ -64,14 +64,44 @@ namespace Unittest
             //act
             uut._state = Ladeskab.StationControl.LadeskabState.Available;
 
-            uut.RfidDetected(id);
+            _usbCharger.Connected.Returns(true);
+
+            uut.RfidDetected(id); //Sætter oldId = id
+
+            uut.RfidDetected(id); 
 
             //Assert
             Assert.That(uut._state, Is.EqualTo(Ladeskab.StationControl.LadeskabState.Available));
 
         }
 
-      
+        [Test]
+
+        public void RfidDetected_LadeskabeStateisDoorOpen_LadeskabeIsDoorOpen()
+        {
+            // Arrange
+            _usbCharger = Substitute.For<IUsbCharger>();
+            _logfile = Substitute.For<Logfile>();
+            _chargeControl = new ChargeControl(_usbCharger, _display);
+            int id = 100;
+
+            StationControl uut = new StationControl(_rfidReader, _door, _display, _logfile, _chargeControl);
+
+            //act
+            uut._state = Ladeskab.StationControl.LadeskabState.DoorOpen;
+
+            _usbCharger.Connected.Returns(true);
+
+
+            uut.RfidDetected(id);
+
+            //Assert
+            Assert.That(uut._state, Is.EqualTo(Ladeskab.StationControl.LadeskabState.DoorOpen));
+        }
+
+
+
+
 
 
 

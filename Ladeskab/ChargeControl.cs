@@ -11,6 +11,7 @@ namespace Ladeskab
    {
         private Display _display;
         private IUsbCharger _usbCharger;
+        public string _chargeMessage;
        
 
         public ChargeControl(IUsbCharger USBCharger, Display display)
@@ -22,28 +23,36 @@ namespace Ladeskab
 
         private void HandleNewCurrentValue(object sender, CurrentEventArgs e)
         {
-            
+            UpdateCurrentCalue(e.Current);
+           
+        }
 
-                if (e.Current == 0)
-                {
-                    _display.Display2Message("");
-                }
-                else if (e.Current > 0 && e.Current <= 5)
-                {
-                    _display.Display2Message("Telefonen er fuldt opladet");
+        public void UpdateCurrentCalue(double Current)
+        {
 
-                }
-                else if (e.Current > 5 && e.Current <= 500)
-                {
-                    _display.Display2Message("Ladning er igang");
+            if (Current == 0)
+            {
+                _chargeMessage = "";
+                _display.Display2Message(_chargeMessage);
+            }
+            else if (Current > 0 && Current <= 5)
+            {
+                _chargeMessage = "Telefonen er fuldt opladet";
+                _display.Display2Message(_chargeMessage);
 
-                }
-                else if (e.Current > 500)
-                {
-                    _display.Display2Message("Fejlmeddelse - frakoble straks telefonen");
+            }
+            else if (Current > 5 && Current <= 500)
+            {
+                _chargeMessage = "Ladning er igang";
+                _display.Display2Message(_chargeMessage);
 
-                }
-            
+            }
+            else if (Current > 500)
+            {
+                _chargeMessage = "Fejlmeddelse - frakoble straks telefonen";
+                _display.Display2Message(_chargeMessage);
+
+            }
         }
 
         public bool IsConnected()
@@ -60,9 +69,9 @@ namespace Ladeskab
             _usbCharger.StopCharge();
         }
 
-        public void StimulateOverload()
-        {
-        }
+        //public void StimulateOverload()
+        //{
+        //}
 
 
     }

@@ -60,8 +60,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChargeControlUnitTest\HandleNewCurrentValueUnitTest.cs" />
-    <Compile Include="ChargeControlUnitTest\StopChargeUnitTest.cs" />
+    <Compile Include="ChargeControlUnitTest\UpdateCurrentCalueUnitTest.cs" />
+    <Compile Include="ChargeControlUnitTest\StopAndStartChargeUnitTest.cs" />
     <Compile Include="DoorUnitTest.cs" />
     <Compile Include="LogFileUnitTest.cs" />
     <Compile Include="RFIDReaderUnitTest.cs" />

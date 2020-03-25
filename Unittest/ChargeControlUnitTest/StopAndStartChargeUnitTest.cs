@@ -10,7 +10,7 @@ using Ladeskab;
 namespace Unittest.ChargeControlUnitTest
 {
     [TestFixture]
-   public class StopChargeUnitTest
+   public class StopAndStartChargeUnitTest
     {
        [Test]
        public void stopCharge_methodIsCalled_UsbSimulatorStopChargeIsCalled()

@@ -39,7 +39,8 @@ namespace Unittest
         public void EventCalled_RFIDPresented()
         {
             var rfidEventRaised = 0;
-
+           
+           
            uut.RFIDDetectedEvent += delegate (object sender, RFIDDetectedEventArgs a) { rfidEventRaised = 1; };
 
             //uut.RFIDDetectedEvent += Raise.EventWith(new RFIDDetectedEventArgs(){Id = 0000});
