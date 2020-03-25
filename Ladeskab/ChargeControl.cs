@@ -11,7 +11,6 @@ namespace Ladeskab
    {
         private Display _display;
         private IUsbCharger _usbCharger;
-        private int _doorState;
        
 
         public ChargeControl(IUsbCharger USBCharger, Display display)
@@ -23,29 +22,28 @@ namespace Ladeskab
 
         private void HandleNewCurrentValue(object sender, CurrentEventArgs e)
         {
-            if (_doorState == 1)
-            {
+            
 
                 if (e.Current == 0)
                 {
-                    _display.DisplayMessage("");
+                    _display.Display2Message("");
                 }
                 else if (e.Current > 0 && e.Current <= 5)
                 {
-                    _display.DisplayMessage("Telefonen er fuldt opladet");
+                    _display.Display2Message("Telefonen er fuldt opladet");
 
                 }
                 else if (e.Current > 5 && e.Current <= 500)
                 {
-                    _display.DisplayMessage("Ladning er igang");
+                    _display.Display2Message("Ladning er igang");
 
                 }
                 else if (e.Current > 500)
                 {
-                    _display.DisplayMessage("Fejlmeddelse - frakoble straks telefonen");
+                    _display.Display2Message("Fejlmeddelse - frakoble straks telefonen");
 
                 }
-            }
+            
         }
 
         public bool IsConnected()
@@ -62,15 +60,10 @@ namespace Ladeskab
             _usbCharger.StopCharge();
         }
 
-        //public void StimulateOverload()
-        //{
-        //    _usbCharger.SimulateOverload(true);
-        //}
-
-        public void doorState(int state)
+        public void StimulateOverload()
         {
-            _doorState = state;
-            
         }
+
+
     }
 }

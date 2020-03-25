@@ -27,7 +27,6 @@ namespace Unittest
             _rfidReader = Substitute.For<IRFIDReader>();
             _usbCharger = Substitute.For<IUsbCharger>();
             _display = Substitute.For<Display>();
-            //_chargeControl = new ChargeControl(_usbCharger, new Display());
             _chargeControl = Substitute.For<ChargeControl>(_usbCharger,_display);
 
 

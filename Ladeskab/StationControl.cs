@@ -51,7 +51,7 @@ namespace Ladeskab
         // Her mangler flere member variable
         private LadeskabState _state;
         private int _oldId;
-        private int _id;
+        //private int _id;
 
         // Vi har lavet en Logfile klasse, derfor er næste linje ikke med mere
         //private string logFile = "logfile.txt"; // Navnet på systemets log-fil
@@ -70,7 +70,6 @@ namespace Ladeskab
                     if (_chargeControl.IsConnected())
                     {
                         _door.LockDoor();
-                        _chargeControl.StartCharge();
                         _oldId = id;
                         //using (var writer = File.AppendText(logFile))
                         //{
@@ -78,13 +77,16 @@ namespace Ladeskab
                         //}
                         _logfile.LogDoorLocked(id);
 
-                        Console.WriteLine("Skabet er låst og din telefon lades. Brug dit RFID tag til at låse op.");
+                        _display.Display1Message("Skabet er låst og din telefon lades. Brug dit RFID tag til at låse op.");
                         _state = LadeskabState.Locked;
-                        _chargeControl.doorState((int)_state);
+
+
+                        _chargeControl.StartCharge();
+
                     }
                     else
                     {
-                        Console.WriteLine("Din telefon er ikke ordentlig tilsluttet. Prøv igen.");
+                        _display.Display1Message("Din telefon er ikke ordentlig tilsluttet. Prøv igen.");
                     }
 
                     break;
@@ -106,35 +108,29 @@ namespace Ladeskab
 
                         _logfile.LogDoorUnlocked(id);
 
-                        Console.WriteLine("Tag din telefon ud af skabet og luk døren");
+                        _display.Display1Message("Tag din telefon ud af skabet og luk døren");
                         _state = LadeskabState.Available;
                     }
                     else
                     {
-                        Console.WriteLine("Forkert RFID tag");
+                        _display.Display1Message("Forkert RFID tag");
                     }
 
                     break;
             }
         }
 
-       
+      
 
         public void DoorOpened()
         {
-            _display.DisplayMessage("Tilslut telefon");
+            _display.Display1Message("Tilslut telefon");
         }
 
         public void DoorClosed()
         {
-            _display.DisplayMessage("Indlæs RFID");
+            _display.Display1Message("Indlæs RFID");
         }
 
-        //private bool CheckId(OldId id)
-        //{
-
-        //}
-
-        // Her mangler de andre trigger handlere
     }
 }
