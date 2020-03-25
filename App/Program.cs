@@ -24,7 +24,6 @@ namespace App
 
             StationControl _stationControl = new StationControl(_rfidReader, _door, _display, _logfile,_chargeControl);
 
-
             //        _door.OnUserOpensDoor();
 
             _door.OnUserOpensDoor();
