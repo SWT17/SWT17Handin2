@@ -60,7 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChargeControlUnitTest\HandleNewCurrentValueUnitTest.cs" />
+    <Compile Include="HandleNewCurrentValueUnitTest.cs" />
     <Compile Include="DoorUnitTest.cs" />
     <Compile Include="LogFileUnitTest.cs" />
     <Compile Include="RFIDReaderUnitTest.cs" />
@@ -78,7 +78,9 @@
       <Name>Ladeskab</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ChargeControlUnitTest\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
