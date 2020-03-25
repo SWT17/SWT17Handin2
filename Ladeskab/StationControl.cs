@@ -41,7 +41,7 @@ namespace Ladeskab
         }
 
         // Enum med tilstande ("states") svarende til tilstandsdiagrammet for klassen
-        private enum LadeskabState
+        public enum LadeskabState
         {
             Available,
             Locked,
@@ -49,7 +49,7 @@ namespace Ladeskab
         };
 
         // Her mangler flere member variable
-        private LadeskabState _state;
+        public LadeskabState _state;
         private int _oldId;
         //private int _id;
 
@@ -101,10 +101,7 @@ namespace Ladeskab
                     {
                         _chargeControl.StopCharge();
                         _door.UnlockDoor();
-                        //using (var writer = File.AppendText(logFile))
-                        //{
-                        //    writer.WriteLine(DateTime.Now + ": Skab låst op med RFID: {0}", id);
-                        //}
+                       
 
                         _logfile.LogDoorUnlocked(id);
 

@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChargeControlUnitTest\HandleNewCurrentValueUnitTest.cs" />
+    <Compile Include="ChargeControlUnitTest\StopChargeUnitTest.cs" />
     <Compile Include="DoorUnitTest.cs" />
     <Compile Include="LogFileUnitTest.cs" />
     <Compile Include="RFIDReaderUnitTest.cs" />

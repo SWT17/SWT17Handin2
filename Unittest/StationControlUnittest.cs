@@ -16,7 +16,6 @@ namespace Unittest
         private IRFIDReader _rfidReader;
         private Display _display;
         private Logfile _logfile;
-        private StationControl _stationControl;
         private IUsbCharger _usbCharger;
         private ChargeControl _chargeControl;
 
@@ -31,9 +30,9 @@ namespace Unittest
         }
        
        [Test]
-       public void RfidDetected_chargingNotConnected_()
+        public void RfidDetected_chargingNotConnectedÉlse_DoorNotLocked()
         {
-
+            //Arrange
             _usbCharger = Substitute.For<IUsbCharger>();
             _door = Substitute.For<IDoor>();
             _chargeControl = new ChargeControl(_usbCharger, _display);
@@ -46,8 +45,34 @@ namespace Unittest
             uut.RfidDetected(100);
 
             _door.DidNotReceive().LockDoor();
-                   
+
+
+                         
         }
+
+        [Test]
+        public void RfidDetected_IdEqualOldId_LadeskabeIsAvailable()
+        {
+            // Arrange
+            _usbCharger = Substitute.For<IUsbCharger>();
+            _logfile = Substitute.For<Logfile>();
+            _chargeControl = new ChargeControl(_usbCharger, _display);
+            int id = 100;
+            
+            StationControl uut = new StationControl(_rfidReader, _door, _display, _logfile, _chargeControl);
+
+            //act
+            uut._state = Ladeskab.StationControl.LadeskabState.Available;
+
+            uut.RfidDetected(id);
+
+            //Assert
+            Assert.That(uut._state, Is.EqualTo(Ladeskab.StationControl.LadeskabState.Available));
+
+        }
+
+      
+
 
 
     }
