@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Ladeskab
 {
-    public class StationControl
+    public class StationControl:IStationControl
     {
         private IDoor _door;
         private IRFIDReader _rfidReader;
-        private Display _display;
-        private Logfile _logfile;
-        private ChargeControl _chargeControl;
+        private IDisplay _display;
+        private ILogfile _logfile;
+        private IChargeControl _chargeControl;
         public StationControl(IRFIDReader RFIDReader, IDoor Door, Display display, Logfile logfile, ChargeControl chargeControl)
         {
             RFIDReader.RFIDDetectedEvent += HandleNewRFID;

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Ladeskab
 {
-    public class Logfile
+    public class Logfile:ILogfile
     {
         public void LogDoorLocked(int Id)
         {
