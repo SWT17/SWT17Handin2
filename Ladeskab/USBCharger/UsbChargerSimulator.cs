@@ -110,11 +110,13 @@ namespace UsbSimulator
             OnNewCurrent();
 
             _charging = false;
+            
         }
 
         private void OnNewCurrent()
         {
             CurrentValueEvent?.Invoke(this, new CurrentEventArgs() {Current = this.CurrentValue});
+            
         }
     }
 }

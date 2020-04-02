@@ -12,7 +12,8 @@ namespace Unittest
     [TestFixture]
     public class UpdateCurrentCalueUnitTest
     {
-
+        private IUsbCharger _chargerUsb;
+        private IDisplay _display;
       
         [TestCase("",0)]
         [TestCase("Telefonen er fuldt opladet",1.0)]
@@ -23,16 +24,37 @@ namespace Unittest
 
         public void UpdateCurrentCalue_Values_chargeMessage(string message, double CurrentValue)
         {
+            _chargerUsb = Substitute.For<IUsbCharger>();
+            _display = Substitute.For<IDisplay>();
 
-            IUsbCharger _chargerUsb = Substitute.For<IUsbCharger>();
-            ChargeControl uut = new ChargeControl(_chargerUsb, new Display());
+            ChargeControl uut = new ChargeControl(_chargerUsb, _display );
 
-            uut.UpdateCurrentCalue(CurrentValue);
+            _chargerUsb.CurrentValueEvent += Raise.EventWith(new CurrentEventArgs { Current = CurrentValue });
 
             StringAssert.Contains(message, uut._chargeMessage);
             
 
         }
 
+        [Test]
+        public void UpdateCurrentValue_Overload_StopChargeCalled()
+        {
+            int overloadCurrent = 750;
+
+            _chargerUsb = Substitute.For<IUsbCharger>();
+            _display = Substitute.For<IDisplay>();
+
+            ChargeControl uut = new ChargeControl(_chargerUsb, _display);
+
+            uut.UpdateCurrentCalue(overloadCurrent);
+
+            _chargerUsb.Received().StopCharge();
+
+  
+
+
+
+
+        }
     }
 }

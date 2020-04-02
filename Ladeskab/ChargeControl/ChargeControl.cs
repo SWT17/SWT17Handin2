@@ -9,12 +9,12 @@ namespace Ladeskab
 {
    public class ChargeControl:IChargeControl
    {
-        private Display _display;
+        private IDisplay _display;
         private IUsbCharger _usbCharger;
         public string _chargeMessage;
        
 
-        public ChargeControl(IUsbCharger USBCharger, Display display)
+        public ChargeControl(IUsbCharger USBCharger, IDisplay display)
         {
             USBCharger.CurrentValueEvent += HandleNewCurrentValue;
             _display = display;
@@ -50,6 +50,7 @@ namespace Ladeskab
             else if (Current > 500)
             {
                 _chargeMessage = "Fejlmeddelse - frakoble straks telefonen";
+                StopCharge(); 
                 _display.Display2Message(_chargeMessage);
 
             }

@@ -41,6 +41,8 @@ namespace Unittest
             _usbCharger.Connected.Returns(false);
 
             var uut = new StationControl(_rfidReader,_door,_display,_logfile,_chargeControl);
+
+            
             
             uut.RfidDetected(100);
 

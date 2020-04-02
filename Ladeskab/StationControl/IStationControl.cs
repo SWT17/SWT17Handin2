@@ -9,6 +9,7 @@ namespace Ladeskab
 {
     public interface IStationControl
     {
+        
                  
         void RfidDetected(int id); //ændret til public!!! :D    Skal den være det?? bliver den ikke kun kaldt i denne klasse??
 

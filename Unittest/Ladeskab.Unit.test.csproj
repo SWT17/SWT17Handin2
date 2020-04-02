@@ -60,6 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChargeControlUnitTest\IsConnectedUnitTest.cs" />
     <Compile Include="ChargeControlUnitTest\UpdateCurrentCalueUnitTest.cs" />
     <Compile Include="ChargeControlUnitTest\StopAndStartChargeUnitTest.cs" />
     <Compile Include="DoorUnitTest.cs" />
