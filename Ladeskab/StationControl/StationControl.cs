@@ -13,7 +13,7 @@ namespace Ladeskab
         private IDisplay _display;
         private ILogfile _logfile;
         private IChargeControl _chargeControl;
-        public StationControl(IRFIDReader RFIDReader, IDoor Door, Display display, Logfile logfile, ChargeControl chargeControl)
+        public StationControl(IRFIDReader RFIDReader, IDoor Door, IDisplay display, ILogfile logfile, IChargeControl chargeControl)
         {
             RFIDReader.RFIDDetectedEvent += HandleNewRFID;
             Door.DoorOpenEvent += HandleNewDoorOpen;

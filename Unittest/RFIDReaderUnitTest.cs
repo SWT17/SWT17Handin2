@@ -14,8 +14,8 @@ namespace Unittest
     {
         private IDoor _door;
         private IRFIDReader uut;
-        private StationControl _stationControl;
-        private ChargeControl _chargeControl;
+        private IStationControl _stationControl;
+        private IChargeControl _chargeControl;
         private IUsbCharger _usbCharger;
 
         public event EventHandler _eventInvoker;
@@ -24,11 +24,11 @@ namespace Unittest
 
         public void SetUp()
         {
-            _usbCharger = new UsbChargerSimulator();
-            _chargeControl = new ChargeControl(_usbCharger, new Display());
+            _usbCharger = Substitute.For<IUsbCharger>();
+            _chargeControl = Substitute.For<IChargeControl>();
             uut = new RFIDReader();
             _door = Substitute.For<Door>();
-            _stationControl = Substitute.For<StationControl>(uut, _door, new Display(), new Logfile(), _chargeControl );
+            _stationControl = Substitute.For<IStationControl>();
         }
 
 
@@ -43,10 +43,8 @@ namespace Unittest
            
            uut.RFIDDetectedEvent += delegate (object sender, RFIDDetectedEventArgs a) { rfidEventRaised = 1; };
 
-            //uut.RFIDDetectedEvent += Raise.EventWith(new RFIDDetectedEventArgs(){Id = 0000});
             uut.OnRFIDTagPresented(0000);
 
-            //_stationControl.Received(1).RfidDetected(0000);
 
             Assert.That(rfidEventRaised, Is.EqualTo(1));
         }

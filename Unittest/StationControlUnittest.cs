@@ -14,19 +14,25 @@ namespace Unittest
     {
         private IDoor _door;
         private IRFIDReader _rfidReader;
-        private Display _display;
-        private Logfile _logfile;
+        private IDisplay _display;
+        private ILogfile _logfile;
         private IUsbCharger _usbCharger;
-        private ChargeControl _chargeControl;
+        private IChargeControl _chargeControl;
+        private StationControl uut;
 
         [SetUp]
         public void Setup()
         {
-            _rfidReader = new RFIDReader();
-            _door = new Door();
-            _logfile = new Logfile();
-            _display = new Display();
-            _usbCharger = new UsbSimulator.UsbChargerSimulator();
+          
+
+            _rfidReader = Substitute.For<IRFIDReader>();
+            _door = Substitute.For<IDoor>();
+            _logfile = Substitute.For<ILogfile>();
+            _display = Substitute.For<IDisplay>();
+            _usbCharger = Substitute.For<IUsbCharger>();
+            _chargeControl = Substitute.For<IChargeControl>();
+
+            uut = new StationControl(_rfidReader, _door, _display, _logfile, _chargeControl);
         }
        
        [Test]
@@ -40,7 +46,7 @@ namespace Unittest
 
             _usbCharger.Connected.Returns(false);
 
-            var uut = new StationControl(_rfidReader,_door,_display,_logfile,_chargeControl);
+            
 
             
             

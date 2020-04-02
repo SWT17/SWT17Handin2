@@ -25,7 +25,7 @@ namespace Unittest.ChargeControlUnitTest
 
         [TestCase(false,false)]
         [TestCase(true,true)]
-        public void IsConnected_methodCalled_MethodConnectedCalledInUSBChargerSimulator(bool connection, bool result)
+        public void IsConnected_methodCalled_ReturnsResult(bool connection, bool result)
         {
 
             _chargerUsb.Connected.Returns(connection);
@@ -33,8 +33,10 @@ namespace Unittest.ChargeControlUnitTest
             Assert.AreEqual(uut.IsConnected(), result);
         }
 
-     
-        
+       
+
+
+
 
     }
 }

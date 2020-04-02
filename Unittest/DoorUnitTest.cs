@@ -16,9 +16,9 @@ namespace Unittest
     {
         private IDoor uut;
         private IRFIDReader _rfidReader;
-        private StationControl _stationControl;
+        private IStationControl _stationControl;
         private IUsbCharger _usbCharger;
-        private ChargeControl _chargeControl;
+        private IChargeControl _chargeControl;
         private Display _display;
 
         [SetUp]
@@ -27,11 +27,11 @@ namespace Unittest
             _rfidReader = Substitute.For<IRFIDReader>();
             _usbCharger = Substitute.For<IUsbCharger>();
             _display = Substitute.For<Display>();
-            _chargeControl = Substitute.For<ChargeControl>(_usbCharger,_display);
+            _chargeControl = Substitute.For<IChargeControl>();
 
 
             uut = new Door();
-            _stationControl = Substitute.For<StationControl>(_rfidReader, uut, new Display(), new Logfile(), _chargeControl);
+            _stationControl = Substitute.For<IStationControl>();
         }
 
         /// <summary>
