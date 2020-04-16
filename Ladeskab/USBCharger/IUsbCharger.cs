@@ -25,7 +25,7 @@ namespace Ladeskab
             void StartCharge();
             // Stop charging
             void StopCharge();
-            //void SimulateOverload(bool overload); 
+            void SimulateOverload(bool overload);
 
         }
     }

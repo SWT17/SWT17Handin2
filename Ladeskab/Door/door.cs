@@ -8,8 +8,7 @@ namespace Ladeskab
 {
     public class Door : IDoor
     {
-        // her anvendes to events da de hver især repræsenterer forskellige states
-        // events indeholder ingen yderligere information
+       
 
         public event EventHandler<DoorOpenEventArgs> DoorOpenEvent;
         public event EventHandler<DoorClosedEventArgs> DoorClosedEvent;

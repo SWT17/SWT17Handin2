@@ -15,6 +15,7 @@ namespace App
     {
         static void Main(string[] args)
         {
+
             IDoor _door = new Door();
             IRFIDReader _rfidReader = new RFIDReader();
             Display _display = new Display();
@@ -22,7 +23,7 @@ namespace App
             IUsbCharger _usbCharger = new UsbChargerSimulator();
             ChargeControl _chargeControl = new ChargeControl(_usbCharger, _display);
 
-            StationControl _stationControl = new StationControl(_rfidReader, _door, _display, _logfile,_chargeControl);
+            StationControl _stationControl = new StationControl(_rfidReader, _door, _display, _logfile, _chargeControl);
 
             //        _door.OnUserOpensDoor();
 
@@ -37,6 +38,7 @@ namespace App
             Console.WriteLine("...");
             Thread.Sleep(1000);
             Console.WriteLine("...");
+
             Thread.Sleep(2000);
             _rfidReader.OnRFIDTagPresented(123);
             Console.ReadKey();

@@ -13,19 +13,7 @@ namespace Ladeskab
         {
             File.AppendAllText(System.AppDomain.CurrentDomain.BaseDirectory + "\\Log.txt", "Locked:\t\tID: " + Id + "; \tDate: " + DateTime.Now + "\n");
 
-            //Kode der gør man kan læse fra filen
-            /*
-            string logData;
-            string inputRecord;
-            string[] inputFields;
-
-            while ((inputRecord = fileReader.ReadLine()) != null)
-            {
-                inputFields = inputRecord.Split(';');
-                logData = inputFields[1];
-            }
-            fileReader.Close();
-            */
+          
         }
 
         public void LogDoorUnlocked(int Id)

@@ -51,16 +51,8 @@ namespace Ladeskab
         // Her mangler flere member variable
         public LadeskabState _state;
         private int _oldId;
-        //private int _id;
-
-        // Vi har lavet en Logfile klasse, derfor er næste linje ikke med mere
-        //private string logFile = "logfile.txt"; // Navnet på systemets log-fil
-
-
-        // Her mangler constructor
-
-        // Eksempel på event handler for eventet "RFID Detected" fra tilstandsdiagrammet for klassen
-        public void RfidDetected(int id) //ændret til public!!! :D    Skal den være det?? bliver den ikke kun kaldt i denne klasse??
+        
+        public void RfidDetected(int id) 
         {
             switch (_state)
             {
@@ -71,10 +63,7 @@ namespace Ladeskab
                     {
                         _door.LockDoor();
                         _oldId = id;
-                        //using (var writer = File.AppendText(logFile))
-                        //{
-                        //    writer.WriteLine(DateTime.Now + ": Skab låst med RFID: {0}", id);
-                        //}
+                       
                         _logfile.LogDoorLocked(id);
 
                         _display.Display1Message("Skabet er låst og din telefon lades. Brug dit RFID tag til at låse op.");

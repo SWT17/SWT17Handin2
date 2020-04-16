@@ -50,8 +50,9 @@ namespace Ladeskab
             else if (Current > 500)
             {
                 _chargeMessage = "Fejlmeddelse - frakoble straks telefonen";
-                StopCharge(); 
                 _display.Display2Message(_chargeMessage);
+                StopCharge(); 
+                
 
             }
         }
@@ -70,9 +71,7 @@ namespace Ladeskab
             _usbCharger.StopCharge();
         }
 
-        //public void StimulateOverload()
-        //{
-        //}
+      
 
 
     }
