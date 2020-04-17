@@ -47,7 +47,7 @@ namespace Unittest
             _usbCharger.Connected.Returns(false);
 
             
-
+           
             
             
             uut.RfidDetected(100);
@@ -108,7 +108,39 @@ namespace Unittest
         }
 
        
+        [Test]
 
+        public void DoorOpened_DoorIsOpened_DisplayRecievesMessage()
+        {
+            uut.DoorOpened();
+
+            _display.Received().Display1Message("Tilslut telefon");
+
+        }
+
+        [Test]
+
+        public void DoorClosed_DoorIsClosed_DisplayRecievesMessage()
+        {
+            uut.DoorClosed();
+
+            _display.Received().Display1Message("Indlæs RFID");
+        }
+
+        [Test]
+
+        public void RfidDetected_PhoneChargingReopenDoor_wrongID()
+        {
+            _chargeControl.IsConnected().Returns(true);
+            uut.RfidDetected(111);
+            
+            uut.RfidDetected(122);
+
+            _display.Received().Display1Message("Forkert RFID tag");
+
+
+            
+        }
 
 
 

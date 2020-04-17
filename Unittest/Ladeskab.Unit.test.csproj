@@ -63,6 +63,7 @@
     <Compile Include="ChargeControlUnitTest\IsConnectedUnitTest.cs" />
     <Compile Include="ChargeControlUnitTest\UpdateCurrentCalueUnitTest.cs" />
     <Compile Include="ChargeControlUnitTest\StopAndStartChargeUnitTest.cs" />
+    <Compile Include="DisplayUnitTest.cs" />
     <Compile Include="DoorUnitTest.cs" />
     <Compile Include="LogFileUnitTest.cs" />
     <Compile Include="RFIDReaderUnitTest.cs" />
