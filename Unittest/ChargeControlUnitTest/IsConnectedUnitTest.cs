@@ -15,11 +15,14 @@ namespace Unittest.ChargeControlUnitTest
         IUsbCharger _chargerUsb;
         IChargeControl uut;
         IDisplay _display;
+        IStationControl _stationControl;
+
         [SetUp]
         public void SetUp()
         {
             _chargerUsb = Substitute.For<IUsbCharger>();
             _display = Substitute.For<IDisplay>();
+            _stationControl = Substitute.For<IStationControl>();
             uut = new ChargeControl(_chargerUsb,_display);
         }
 
@@ -31,10 +34,14 @@ namespace Unittest.ChargeControlUnitTest
             _chargerUsb.Connected.Returns(connection);
 
             Assert.AreEqual(uut.IsConnected(), result);
+            
         }
 
+
        
-        public void 
+      
+
+       
 
 
 

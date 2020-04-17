@@ -107,7 +107,7 @@ namespace Unittest
             Assert.That(uut._state, Is.EqualTo(Ladeskab.StationControl.LadeskabState.DoorOpen));
         }
 
-
+       
 
 
 

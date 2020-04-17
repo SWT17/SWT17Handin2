@@ -28,7 +28,6 @@ namespace Unittest
 
             StringAssert.Contains(id, fileText);
 
-            //File.WriteAllText(System.AppDomain.CurrentDomain.BaseDirectory + "\\Log.txt", String.Empty);
 
 
 
